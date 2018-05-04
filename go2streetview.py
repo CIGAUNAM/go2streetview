@@ -398,9 +398,9 @@ class go2streetview(gui.QgsMapTool):
             msg.setText("lon: " + str(geom.asPoint().x()) + " lat: " + str(geom.asPoint().y()))
             layer.select(selected_fid)
             self.setPosition()
-            self.view.enter.connect(self.clickOn)
-            self.clickOn()
-            self.explore()
+            # self.view.enter.connect(self.clickOn)
+            # self.clickOn()
+            # self.explore()
             self.refreshWidget(geom.asPoint().x(), geom.asPoint().y())
 
 
