@@ -70,6 +70,7 @@ class go2streetview(gui.QgsMapTool):
         self.iface.addPluginToWebMenu("&go2streetview", self.StreetviewAction)
         self.dirPath = os.path.dirname( os.path.abspath( __file__ ) )
         self.actualPOV = {}
+        self.panoPOV = {}
         self.view = go2streetviewDialog()
         self.dumView = dumWidget()
         self.dumView.enter.connect(self.clickOn)
@@ -395,18 +396,25 @@ class go2streetview(gui.QgsMapTool):
             self.actualPOV['lon'] = geom.asPoint().x()
             self.actualPOV['lat'] = geom.asPoint().y()
             selected_fid.append(i.id())
-            msg.setText("lon: " + str(geom.asPoint().x()) + " lat: " + str(geom.asPoint().y()))
+
             layer.select(selected_fid)
             self.setPosition()
-            # self.view.enter.connect(self.clickOn)
-            # self.clickOn()
-            # self.explore()
+
             self.refreshWidget(geom.asPoint().x(), geom.asPoint().y())
+
+            curpov = self.snapshotOutput.setCurrentPOV()
+
+
+
+
+            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" +
+                        str(curpov))
+
 
 
             msg.exec()
             c += 1
-            if c >= 10:
+            if c >= 4:
                 break
 
 
@@ -479,8 +487,10 @@ class go2streetview(gui.QgsMapTool):
     def catchJSevents(self,status):
         try:
             tmpPOV = json.JSONDecoder().decode(status)
+
         except:
             tmpPOV = None
+            ## core.QgsMessageLog.logMessage("Aqui", tag="go2streetview", level=core.Qgis.Info)
         if tmpPOV:
             if tmpPOV["transport"] == "drag":
                 self.refreshWidget(tmpPOV['lon'], tmpPOV['lat'])
@@ -495,6 +505,7 @@ class go2streetview(gui.QgsMapTool):
                         self.writeInfoBuffer(self.transformToCurrentSRS(actualPoint))
                 else:
                     self.actualPOV = tmpPOV
+                    self.panoPOV = tmpPOV
                 self.setPosition()
             elif tmpPOV["transport"] == "mapCommand":
                 feat = self.infoBoxManager.getInfolayer().getFeatures(core.QgsFeatureRequest(tmpPOV["fid"])).__next__()
