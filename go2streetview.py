@@ -21,6 +21,7 @@
 # Import the PyQt and QGIS libraries
 
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
+from PyQt5.QtWidgets import QMessageBox
 from qgis import core, utils, gui
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
@@ -203,6 +204,9 @@ class go2streetview(gui.QgsMapTool):
         self.clickToGoControl.toggled.connect(self.updateSVOptions)
         self.showCoverage.toggled.connect(self.showCoverageLayer)
         contextMenu.addSeparator()
+        self.panoramaItem = contextMenu.addAction("Obtener Panoramas")
+        self.panoramaItem.triggered.connect(self.panoramaAction)
+        contextMenu.addSeparator()
         self.showWebInspector = contextMenu.addAction("Show web inspector for debugging")
         self.showWebInspector.triggered.connect(self.showWebInspectorAction)
         self.aboutItem = contextMenu.addAction("About plugin")
@@ -363,6 +367,37 @@ class go2streetview(gui.QgsMapTool):
 
     def aboutAction(self):
         self.licenceDlg.show()
+
+    def panoramaAction(self):
+        # Lkernel_arbol_muestra_mix = 'C:/Users/SIE/Desktop/pruebapuntos1.gpkg'
+        Lprueba1 = core.QgsVectorLayer('C:/Users/SIE/Desktop/pruebapuntos1.gpkg', 'Lprueba1', 'ogr')
+        layer = self.iface.activeLayer()
+
+        selected_fid = []
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        # msg.setText("This is a message box")
+        msg.setInformativeText("This is additional information")
+        msg.setWindowTitle("MessageBox demo")
+
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # msg.exec()
+
+        features = layer.getFeatures()
+
+        for i in features:
+            geom = i.geometry()
+            selected_fid.append(i.id())
+            msg.setText("Punto" + str(geom.asPoint()))
+            layer.select(selected_fid)
+            self.setPosition()
+
+            msg.exec()
+            break
+
+
+
 
     def infoLayerAction(self):
         self.infoBoxManager.show()
