@@ -381,20 +381,33 @@ class go2streetview(gui.QgsMapTool):
         msg.setInformativeText("This is additional information")
         msg.setWindowTitle("MessageBox demo")
 
-        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         # msg.exec()
+
+
 
         features = layer.getFeatures()
 
+        c = 1
+
         for i in features:
             geom = i.geometry()
+            self.actualPOV['lon'] = geom.asPoint().x()
+            self.actualPOV['lat'] = geom.asPoint().y()
             selected_fid.append(i.id())
-            msg.setText("Punto" + str(geom.asPoint()))
+            msg.setText("lon: " + str(geom.asPoint().x()) + " lat: " + str(geom.asPoint().y()))
             layer.select(selected_fid)
             self.setPosition()
+            self.view.enter.connect(self.clickOn)
+            self.clickOn()
+            self.explore()
+            self.refreshWidget(geom.asPoint().x(), geom.asPoint().y())
+
 
             msg.exec()
-            break
+            c += 1
+            if c >= 10:
+                break
 
 
 
