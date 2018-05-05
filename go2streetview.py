@@ -451,7 +451,7 @@ class go2streetview(gui.QgsMapTool):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         # msg.setText("This is a message box")
-        msg.setInformativeText("This is additional information")
+        # msg.setInformativeText("This is additional information")
         msg.setWindowTitle("MessageBox demo")
         # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         # msg.exec()
@@ -476,18 +476,17 @@ class go2streetview(gui.QgsMapTool):
 
 
 
-            self.refreshWidget(self.panoPOV['lon'], self.panoPOV['lat'])
+            self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
 
 
 
-            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV))
+            # msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV))
+            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(i.id()))
 
 
             msg.exec()
-            time.sleep(1)
-            msg.destroy()
-            time.sleep(1)
+
 
 
 
@@ -502,8 +501,9 @@ class go2streetview(gui.QgsMapTool):
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
 
+
             c += 1
-            if c >= 3:
+            if c >= 6:
                 break
 
 

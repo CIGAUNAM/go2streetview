@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3eec8936-9382-4447-b3ed-278fd7b592d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/go2streetview.iml" afterPath="$PROJECT_DIR$/.idea/go2streetview.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/go2streetview.py" afterPath="$PROJECT_DIR$/go2streetview.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/snapshot.py" afterPath="$PROJECT_DIR$/snapshot.py" />
     </list>
     <ignored path="go2streetview.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +25,8 @@
       <file leaf-file-name="go2streetview.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/go2streetview.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="505" column="21" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
+            <state relative-caret-position="2662">
+              <caret line="1018" column="17" lean-forward="false" selection-start-line="1018" selection-start-column="13" selection-end-line="1018" selection-end-column="17" />
               <folding>
                 <element signature="e#1115#1211#0" expanded="true" />
                 <element signature="e#18550#18613#0" expanded="false" />
@@ -47,8 +44,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>httpC</find>
-      <find>noSVConnectionsPending</find>
       <find>enableControlShape</find>
       <find>defined</find>
       <find>raise</find>
@@ -77,6 +72,8 @@
       <find>status</find>
       <find>time</find>
       <find>msg.</find>
+      <find>snap</find>
+      <find>http</find>
     </findStrings>
     <replaceStrings>
       <replace>QgsPointXY</replace>
@@ -441,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525446787171</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="yacasi">
+      <created>1525498912747</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525498912747</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -487,7 +491,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="yacasi" />
+    <option name="LAST_COMMIT_MESSAGE" value="yacasi" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -899,7 +904,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/snapshot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
+        <state relative-caret-position="66">
           <caret line="70" column="10" lean-forward="false" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
           <folding>
             <element signature="e#1073#1169#0" expanded="true" />
@@ -909,8 +914,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/go2streetview.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="505" column="21" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
+        <state relative-caret-position="2662">
+          <caret line="1018" column="17" lean-forward="false" selection-start-line="1018" selection-start-column="13" selection-end-line="1018" selection-end-column="17" />
           <folding>
             <element signature="e#1115#1211#0" expanded="true" />
             <element signature="e#18550#18613#0" expanded="false" />
