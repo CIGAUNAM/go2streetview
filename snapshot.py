@@ -65,9 +65,19 @@ class snapShot():
     #method to extract actual position from Streetview html application
     def setCurrentPOV(self):
         actualLoc = self.webview.page().currentFrame().findFirstElement("div#position_cell")
+
+
+
         actualLoc = actualLoc.toPlainText()
+        core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
+
         actualLat = actualLoc[1:actualLoc.find(", ")]
         actualLon = actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]
+
+        core.QgsMessageLog.logMessage("setCurrentPOV actualLat: " + str(actualLoc[1:actualLoc.find(", ")]), tag="go2streetview", level=core.Qgis.Info)
+        core.QgsMessageLog.logMessage("setCurrentPOV actualLon: " + str(actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]), tag="go2streetview", level=core.Qgis.Info)
+
+
         actualHeading = self.webview.page().currentFrame().findFirstElement("div#heading_cell")
         actualHeading = actualHeading.toPlainText()
         actualZoom = self.webview.page().currentFrame().findFirstElement("div#zoom_cell")
@@ -148,7 +158,7 @@ class snapShot():
         fields.append(core.QgsField("url", QtCore.QVariant.String, len=250))
         srs = core.QgsCoordinateReferenceSystem ()
         srs.createFromProj4 ("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
-        writer = core.QgsVectorFileWriter(path, "ISO 8859-1", fields,  core.QgsWkbTypes.WKBPoint, srs, "ESRI Shapefile")
+        writer = core.QgsVectorFileWriter(path, "ISO 8859-1", fields,  core.QgsWkbTypes.Point, srs, "ESRI Shapefile")
         del writer 
 
     # procedure to store image and write log
