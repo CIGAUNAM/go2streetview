@@ -22,6 +22,7 @@
 
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtCore import QTimer, QTime, QTimerEvent
 from qgis import core, utils, gui
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
@@ -468,39 +469,23 @@ class go2streetview(gui.QgsMapTool):
 
             layer.select(selected_fid)
             # self.setPosition()
-
-
-
-
             # currPanoPOV = self.snapshotOutput.setCurrentPOV()
-
-
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-
-
-
-            # msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV))
             msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(i.id()))
-
 
             msg.exec()
 
-
-
-
-
             core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
             core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
-            # core.QgsMessageLog.logMessage("Punto Panorama: " + "lon: " + str(self.panoPOV['lon']) + " lat: " + str(self.panoPOV['lat']), tag="go2streetview", level=core.Qgis.Info)
             self.heading = self.calculate_initial_compass_bearing((float(self.actualPOV['lon']), float(self.actualPOV['lat'])), (float(geom.asPoint().x()), float(geom.asPoint().y())))
 
             core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-
+            msg.exec()
 
             c += 1
             if c >= 6:

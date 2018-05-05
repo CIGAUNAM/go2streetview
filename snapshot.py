@@ -34,7 +34,6 @@ import os
 import datetime
 import osgeo.ogr, osgeo.osr
 import os.path
-import time
 
 class snapShot():
 
@@ -65,10 +64,11 @@ class snapShot():
 
     #method to extract actual position from Streetview html application
     def setCurrentPOV(self):
+
         actualLoc = self.webview.page().currentFrame().findFirstElement("div#position_cell")
 
         actualLoc = actualLoc.toPlainText()
-        # core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
+        core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
 
         actualLat = actualLoc[1:actualLoc.find(", ")]
         actualLon = actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]
