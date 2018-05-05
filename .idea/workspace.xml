@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3eec8936-9382-4447-b3ed-278fd7b592d0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" afterPath="$PROJECT_DIR$/CHANGELOG.txt" />
-      <change beforePath="$PROJECT_DIR$/go2streetview.py" afterPath="$PROJECT_DIR$/go2streetview.py" />
-      <change beforePath="$PROJECT_DIR$/metadata.txt" afterPath="$PROJECT_DIR$/metadata.txt" />
-      <change beforePath="$PROJECT_DIR$/res/g2sv.html" afterPath="$PROJECT_DIR$/res/g2sv.html" />
-      <change beforePath="$PROJECT_DIR$/snapshot.py" afterPath="$PROJECT_DIR$/snapshot.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/go2streetview.iml" afterPath="$PROJECT_DIR$/.idea/go2streetview.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/go2streetview.py" afterPath="$PROJECT_DIR$/go2streetview.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/snapshot.py" afterPath="$PROJECT_DIR$/snapshot.py" />
     </list>
     <ignored path="go2streetview.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,73 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="go2streetviewDialog.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/go2streetviewDialog.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7020">
-              <caret line="397" column="33" lean-forward="false" selection-start-line="397" selection-start-column="33" selection-end-line="397" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="go2streetview.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/go2streetview.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="505" column="22" lean-forward="false" selection-start-line="505" selection-start-column="22" selection-end-line="505" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="metadata.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metadata.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGELOG.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CHANGELOG.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="snapshot.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/snapshot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1854">
-              <caret line="118" column="81" lean-forward="false" selection-start-line="118" selection-start-column="75" selection-end-line="118" selection-end-column="81" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="transformgeom.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/transformgeom.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="682">
+              <caret line="505" column="21" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#1115#1211#0" expanded="true" />
+                <element signature="e#18550#18613#0" expanded="false" />
+                <element signature="e#18661#19277#0" expanded="false" />
+                <element signature="e#19319#19419#0" expanded="false" />
+                <element signature="e#19464#19576#0" expanded="false" />
+                <element signature="e#19620#19641#0" expanded="false" />
+                <element signature="e#19673#20606#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -102,35 +47,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Types</find>
-      <find>qwebse</find>
-      <find>QgsPoint</find>
-      <find>gui.QgsPoint</find>
-      <find>QgsExpression</find>
-      <find>fromPoint</find>
-      <find>SV.load</find>
-      <find>self.view.BE.page().mainFrame().evaluateJavaScript</find>
-      <find>icoB</find>
-      <find>icoG</find>
-      <find>ico</find>
-      <find>bing</find>
-      <find>infobox</find>
-      <find>QgsRubberBand</find>
-      <find>controlShape</find>
-      <find>controlPoints</find>
-      <find>viewBuffer</find>
-      <find>self.controlShape</find>
-      <find>infoLayerDefinedAction</find>
-      <find>ciclePause</find>
-      <find>gsv</find>
       <find>httpC</find>
       <find>noSVConnectionsPending</find>
       <find>enableControlShape</find>
       <find>defined</find>
       <find>raise</find>
       <find>project</find>
-      <find>print</find>
       <find>level=</find>
+      <find>panora</find>
+      <find>snapshotOutput</find>
+      <find>canvasPressEvent</find>
+      <find>bbeU</find>
+      <find>setPosition</find>
+      <find>catchJSevents</find>
+      <find>bbeu</find>
+      <find>Pano</find>
+      <find>snapsho</find>
+      <find>logMes</find>
+      <find>2gm</find>
+      <find>openSVDialog</find>
+      <find>print</find>
+      <find>tmpPOV</find>
+      <find>STATUS</find>
+      <find>curr</find>
+      <find>currPa</find>
+      <find>msg</find>
+      <find>head</find>
+      <find>panoramasJS</find>
+      <find>status</find>
+      <find>time</find>
+      <find>msg.</find>
     </findStrings>
     <replaceStrings>
       <replace>QgsPointXY</replace>
@@ -142,22 +88,29 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/go2streetviewDialog.py" />
-        <option value="$PROJECT_DIR$/snapshot.py" />
         <option value="$PROJECT_DIR$/metadata.txt" />
         <option value="$PROJECT_DIR$/CHANGELOG.txt" />
+        <option value="$PROJECT_DIR$/snapshot.py" />
         <option value="$PROJECT_DIR$/go2streetview.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-80" />
+    <option name="y" value="21" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -206,6 +159,118 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/go2streetview.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/snapshot.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -369,22 +434,32 @@
       <option name="presentableId" value="Default" />
       <updated>1412929747015</updated>
     </task>
+    <task id="LOCAL-00001" summary="a">
+      <created>1525446787171</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1525446787171</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1862" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23782639" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18196037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1936737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -395,6 +470,9 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25581396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -407,6 +485,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="a" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="1" />
@@ -414,19 +496,19 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/go2streetview.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="763" column="0" lean-forward="false" selection-start-line="763" selection-start-column="0" selection-end-line="763" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -443,7 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -451,7 +532,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="508" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -468,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -476,7 +564,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -493,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -501,7 +596,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -526,7 +628,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -543,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,7 +660,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -568,7 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -576,7 +692,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -593,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -601,7 +724,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +756,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -643,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -651,7 +788,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,7 +812,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -683,7 +836,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -691,25 +852,22 @@
     <entry file="file://$PROJECT_DIR$/ui_infoBox.py" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="154">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/go2streetviewDialog.py">
+    <entry file="file://$PROJECT_DIR$/metadata.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7020">
-          <caret line="397" column="33" lean-forward="false" selection-start-line="397" selection-start-column="33" selection-end-line="397" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="528">
+          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/snapshot.py">
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1854">
-          <caret line="118" column="81" lean-forward="false" selection-start-line="118" selection-start-column="75" selection-end-line="118" selection-end-column="81" />
-          <folding />
+        <state relative-caret-position="2156">
+          <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -718,32 +876,50 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metadata.txt">
+    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-1042101660/PyQt5/QtPositioning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="25" selection-end-column="36" />
+        <state relative-caret-position="370">
+          <caret line="688" column="8" lean-forward="false" selection-start-line="688" selection-start-column="8" selection-end-line="688" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.txt">
+    <entry file="file://$PROJECT_DIR$/go2streetviewDialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state relative-caret-position="304">
+          <caret line="327" column="8" lean-forward="false" selection-start-line="327" selection-start-column="8" selection-end-line="327" selection-end-column="8" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snapshot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="70" column="10" lean-forward="false" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+          <folding>
+            <element signature="e#1073#1169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/go2streetview.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="505" column="22" lean-forward="false" selection-start-line="505" selection-start-column="22" selection-end-line="505" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="682">
+          <caret line="505" column="21" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="21" />
+          <folding>
+            <element signature="e#1115#1211#0" expanded="true" />
+            <element signature="e#18550#18613#0" expanded="false" />
+            <element signature="e#18661#19277#0" expanded="false" />
+            <element signature="e#19319#19419#0" expanded="false" />
+            <element signature="e#19464#19576#0" expanded="false" />
+            <element signature="e#19620#19641#0" expanded="false" />
+            <element signature="e#19673#20606#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

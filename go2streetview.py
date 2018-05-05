@@ -40,6 +40,7 @@ import time
 import json
 import configparser
 import sip
+import time
 
 class go2streetview(gui.QgsMapTool):
 
@@ -70,8 +71,9 @@ class go2streetview(gui.QgsMapTool):
         self.iface.addPluginToWebMenu("&go2streetview", self.StreetviewAction)
         self.dirPath = os.path.dirname( os.path.abspath( __file__ ) )
         self.actualPOV = {}
-        self.panoPOV = {}
+        self.panoPOV = {"lat":0.0,"lon":0.0,"heading":0.0,"zoom":1}
         self.heading = 0
+        self.panoramasJS = False
         self.view = go2streetviewDialog()
         self.dumView = dumWidget()
         self.dumView.enter.connect(self.clickOn)
@@ -370,56 +372,6 @@ class go2streetview(gui.QgsMapTool):
     def aboutAction(self):
         self.licenceDlg.show()
 
-    def panoramaAction(self):
-        # Lkernel_arbol_muestra_mix = 'C:/Users/SIE/Desktop/pruebapuntos1.gpkg'
-        Lprueba1 = core.QgsVectorLayer('C:/Users/SIE/Desktop/pruebapuntos1.gpkg', 'Lprueba1', 'ogr')
-        layer = self.iface.activeLayer()
-
-        selected_fid = []
-
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        # msg.setText("This is a message box")
-        msg.setInformativeText("This is additional information")
-        msg.setWindowTitle("MessageBox demo")
-        # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        # msg.exec()
-
-        features = layer.getFeatures()
-
-        c = 1
-
-        for i in features:
-            geom = i.geometry()
-            self.actualPOV['lon'] = geom.asPoint().x()
-            self.actualPOV['lat'] = geom.asPoint().y()
-            selected_fid.append(i.id())
-
-            layer.select(selected_fid)
-            self.setPosition()
-
-
-
-            currPanoPOV = self.snapshotOutput.setCurrentPOV()
-
-            self.refreshWidget(geom.asPoint().x(), geom.asPoint().y())
-
-            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(currPanoPOV))
-
-            core.QgsMessageLog.logMessage("Punto Arbol: " + "lon: " + str(geom.asPoint().x()) + " lat: " + str(geom.asPoint().y()), tag="go2streetview", level=core.Qgis.Info)
-            core.QgsMessageLog.logMessage("Punto Arbol: " + "lon: " + str(self.actualPOV['lon']) + " lat: " + str(self.actualPOV['lat']), tag="go2streetview", level=core.Qgis.Info)
-            core.QgsMessageLog.logMessage("Punto Panorama: " + "lon: " + str(currPanoPOV['lon']) + " lat: " + str(currPanoPOV['lat']), tag="go2streetview", level=core.Qgis.Info)
-
-            self.heading = self.calculate_initial_compass_bearing((float(currPanoPOV['lon']), float(currPanoPOV['lat'])), (float(self.actualPOV['lon']), float(self.actualPOV['lat'])))
-
-
-            core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
-
-
-            msg.exec()
-            c += 1
-            if c >= 3:
-                break
 
 
 
@@ -488,10 +440,78 @@ class go2streetview(gui.QgsMapTool):
         self.iface.removeToolBarIcon(self.StreetviewAction)
         self.iface.removeDockWidget(self.apdockwidget)
 
+
+    def panoramaAction(self):
+        # Lkernel_arbol_muestra_mix = 'C:/Users/SIE/Desktop/pruebapuntos1.gpkg'
+        Lprueba1 = core.QgsVectorLayer('C:/Users/SIE/Desktop/pruebapuntos1.gpkg', 'Lprueba1', 'ogr')
+        layer = self.iface.activeLayer()
+
+        selected_fid = []
+
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        # msg.setText("This is a message box")
+        msg.setInformativeText("This is additional information")
+        msg.setWindowTitle("MessageBox demo")
+        # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # msg.exec()
+
+        features = layer.getFeatures()
+
+        c = 1
+
+        for i in features:
+            geom = i.geometry()
+            self.actualPOV['lon'] = geom.asPoint().x()
+            self.actualPOV['lat'] = geom.asPoint().y()
+            selected_fid.append(i.id())
+
+            layer.select(selected_fid)
+            # self.setPosition()
+
+
+
+
+            # currPanoPOV = self.snapshotOutput.setCurrentPOV()
+
+
+
+            self.refreshWidget(self.panoPOV['lon'], self.panoPOV['lat'])
+
+
+
+
+            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV))
+
+
+            msg.exec()
+            time.sleep(1)
+            msg.destroy()
+            time.sleep(1)
+
+
+
+
+            core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
+            core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
+            # core.QgsMessageLog.logMessage("Punto Panorama: " + "lon: " + str(self.panoPOV['lon']) + " lat: " + str(self.panoPOV['lat']), tag="go2streetview", level=core.Qgis.Info)
+            self.heading = self.calculate_initial_compass_bearing((float(self.actualPOV['lon']), float(self.actualPOV['lat'])), (float(geom.asPoint().x()), float(geom.asPoint().y())))
+
+            core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
+
+            self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
+
+
+            c += 1
+            if c >= 3:
+                break
+
+
     def catchJSevents(self,status):
         try:
             tmpPOV = json.JSONDecoder().decode(status)
-
+            # self.panoPOV = status
+            self.panoPOV = tmpPOV
         except:
             tmpPOV = None
             ## core.QgsMessageLog.logMessage("Aqui", tag="go2streetview", level=core.Qgis.Info)
@@ -517,6 +537,15 @@ class go2streetview(gui.QgsMapTool):
                     self.iface.openFeatureForm(self.infoBoxManager.getInfolayer(),feat,True)
                 if tmpPOV["type"] == "select":
                     self.infoBoxManager.getInfolayer().select(feat.id())
+
+            self.panoramasJS = False
+            if self.panoramasJS:
+                self.panoPOV = tmpPOV
+                core.QgsMessageLog.logMessage(status, tag="go2streetview", level=core.Qgis.Info)
+                core.QgsMessageLog.logMessage("PANORAMASJS", tag="go2streetview", level=core.Qgis.Info)
+
+
+
 
     def calculate_initial_compass_bearing(self, pointA, pointB):
         """

@@ -34,6 +34,7 @@ import os
 import datetime
 import osgeo.ogr, osgeo.osr
 import os.path
+import time
 
 class snapShot():
 
@@ -66,17 +67,11 @@ class snapShot():
     def setCurrentPOV(self):
         actualLoc = self.webview.page().currentFrame().findFirstElement("div#position_cell")
 
-
-
         actualLoc = actualLoc.toPlainText()
-        core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
+        # core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
 
         actualLat = actualLoc[1:actualLoc.find(", ")]
         actualLon = actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]
-
-        core.QgsMessageLog.logMessage("setCurrentPOV actualLat: " + str(actualLoc[1:actualLoc.find(", ")]), tag="go2streetview", level=core.Qgis.Info)
-        core.QgsMessageLog.logMessage("setCurrentPOV actualLon: " + str(actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]), tag="go2streetview", level=core.Qgis.Info)
-
 
         actualHeading = self.webview.page().currentFrame().findFirstElement("div#heading_cell")
         actualHeading = actualHeading.toPlainText()
