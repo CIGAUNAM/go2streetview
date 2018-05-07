@@ -485,10 +485,12 @@ class go2streetview(gui.QgsMapTool):
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
+            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV) + "\n\n" + str(i.id()))
+
             msg.exec()
 
             c += 1
-            if c >= 6:
+            if c >= 11:
                 break
 
 
