@@ -64,15 +64,10 @@ class snapShot():
 
     #method to extract actual position from Streetview html application
     def setCurrentPOV(self):
-
         actualLoc = self.webview.page().currentFrame().findFirstElement("div#position_cell")
-
         actualLoc = actualLoc.toPlainText()
-        core.QgsMessageLog.logMessage("setCurrentPOV: " + str(actualLoc), tag="go2streetview", level=core.Qgis.Info)
-
         actualLat = actualLoc[1:actualLoc.find(", ")]
         actualLon = actualLoc[actualLoc.find(", ")+2:len(actualLoc)-1]
-
         actualHeading = self.webview.page().currentFrame().findFirstElement("div#heading_cell")
         actualHeading = actualHeading.toPlainText()
         actualZoom = self.webview.page().currentFrame().findFirstElement("div#zoom_cell")
@@ -115,7 +110,7 @@ class snapShot():
 
     # method to save google image to local file
     def saveImg(self,path = None):
-        urlimg="http://maps.googleapis.com/maps/api/streetview?size=640x400&location="+self.pov['lat']+","+self.pov['lon']+"&heading="+self.pov['heading']+"&pitch="+self.pov['pitch']+"&sensor=false&key="+self.parent.APIkey
+        urlimg="http://maps.googleapis.com/maps/api/streetview?size=640x640&location="+self.pov['lat']+","+self.pov['lon']+"&heading="+self.pov['heading']+"&pitch="+self.pov['pitch']+"&sensor=false&key="+self.parent.APIkey
         #print urlimg
         if path:
             self.file_name = path
@@ -125,7 +120,7 @@ class snapShot():
         u = urlopen(urlimg)
         f = open(self.file_name, 'wb')
         meta = u.info()
-        file_size = int(meta.getheaders("Content-Length")[0])
+        file_size = int(u.headers["Content-Length"])
         file_size_dl = 0
         block_sz = 8192
         while True:
@@ -159,7 +154,7 @@ class snapShot():
     # procedure to store image and write log
     def saveShapeFile(self):
         #The line below is commented to disable saving of static images in local directory to not violate point 10.1.3.b) of https://developers.google.com/maps/terms
-        #self.saveImg()
+        self.saveImg()
         #fov = str(int(90/max(1,float(self.pov['zoom']))))
         zoom = float(self.pov['zoom'])
         fov = 3.9018*pow(zoom,2) - 42.432*zoom + 123
