@@ -22,7 +22,6 @@
 
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QTimer, QTime, QTimerEvent
 from qgis import core, utils, gui
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
@@ -41,7 +40,6 @@ import time
 import json
 import configparser
 import sip
-import time
 
 class go2streetview(gui.QgsMapTool):
 
@@ -72,9 +70,6 @@ class go2streetview(gui.QgsMapTool):
         self.iface.addPluginToWebMenu("&go2streetview", self.StreetviewAction)
         self.dirPath = os.path.dirname( os.path.abspath( __file__ ) )
         self.actualPOV = {}
-        self.panoPOV = {"lat":0.0,"lon":0.0,"heading":0.0,"zoom":1}
-        self.heading = 0
-        self.panoramasJS = False
         self.view = go2streetviewDialog()
         self.dumView = dumWidget()
         self.dumView.enter.connect(self.clickOn)
@@ -373,10 +368,6 @@ class go2streetview(gui.QgsMapTool):
     def aboutAction(self):
         self.licenceDlg.show()
 
-
-
-
-
     def infoLayerAction(self):
         self.infoBoxManager.show()
         self.infoBoxManager.raise_()
@@ -497,11 +488,8 @@ class go2streetview(gui.QgsMapTool):
     def catchJSevents(self,status):
         try:
             tmpPOV = json.JSONDecoder().decode(status)
-            # self.panoPOV = status
-            self.panoPOV = tmpPOV
         except:
             tmpPOV = None
-            ## core.QgsMessageLog.logMessage("Aqui", tag="go2streetview", level=core.Qgis.Info)
         if tmpPOV:
             if tmpPOV["transport"] == "drag":
                 self.refreshWidget(tmpPOV['lon'], tmpPOV['lat'])
@@ -516,7 +504,6 @@ class go2streetview(gui.QgsMapTool):
                         self.writeInfoBuffer(self.transformToCurrentSRS(actualPoint))
                 else:
                     self.actualPOV = tmpPOV
-                    self.panoPOV = tmpPOV
                 self.setPosition()
             elif tmpPOV["transport"] == "mapCommand":
                 feat = self.infoBoxManager.getInfolayer().getFeatures(core.QgsFeatureRequest(tmpPOV["fid"])).__next__()
@@ -524,56 +511,6 @@ class go2streetview(gui.QgsMapTool):
                     self.iface.openFeatureForm(self.infoBoxManager.getInfolayer(),feat,True)
                 if tmpPOV["type"] == "select":
                     self.infoBoxManager.getInfolayer().select(feat.id())
-
-            self.panoramasJS = False
-            if self.panoramasJS:
-                self.panoPOV = tmpPOV
-                core.QgsMessageLog.logMessage(status, tag="go2streetview", level=core.Qgis.Info)
-                core.QgsMessageLog.logMessage("PANORAMASJS", tag="go2streetview", level=core.Qgis.Info)
-
-
-
-
-    def calculate_initial_compass_bearing(self, pointA, pointB):
-        """
-        lonlat
-
-        Calculates the bearing between two points.
-        The formulae used is the following:
-            θ = atan2(sin(Δlong).cos(lat2),
-                      cos(lat1).sin(lat2) − sin(lat1).cos(lat2).cos(Δlong))
-        :Parameters:
-          - `pointA: The tuple representing the latitude/longitude for the
-            first point. Latitude and longitude must be in decimal degrees
-          - `pointB: The tuple representing the latitude/longitude for the
-            second point. Latitude and longitude must be in decimal degrees
-        :Returns:
-          The bearing in degrees
-        :Returns Type:
-          float
-        """
-        if (type(pointA) != tuple) or (type(pointB) != tuple):
-            raise TypeError("Only tuples are supported as arguments")
-
-        lat1 = math.radians(float(pointA[1]))
-        lat2 = math.radians(float(pointB[1]))
-
-        diffLong = math.radians(float(pointB[0]) - float(pointA[0]))
-
-        x = math.sin(diffLong) * math.cos(lat2)
-        y = math.cos(lat1) * math.sin(lat2) - (math.sin(lat1)
-                * math.cos(lat2) * math.cos(diffLong))
-
-        initial_bearing = math.atan2(x, y)
-
-        # Now we have the initial bearing but math.atan2 return values
-        # from -180° to + 180° which is not what we want for a compass bearing
-        # The solution is to normalize the initial bearing as shown below
-        initial_bearing = math.degrees(initial_bearing)
-        compass_bearing = (initial_bearing + 360) % 360
-
-        return compass_bearing
-
 
     def setPosition(self,forcePosition = None):
         #if self.apdockwidget.widget().__dict__ == self.dumView.__dict__ or not self.apdockwidget.isVisible():
@@ -671,7 +608,6 @@ class go2streetview(gui.QgsMapTool):
     def refreshWidget(self, new_lon, new_lat):
         if self.actualPOV['lat'] != 0.0:
             self.gswDialogUrl = os.path.join(self.dirPath,'res','g2sv.html?lat=' + str(new_lat) + "&long=" + str(new_lon) + "&width=" + str(self.viewWidth) + "&height=" + str(self.viewHeight) + "&heading=" + str(self.heading) + "&APIkey=" + self.APIkey)
-
             self.view.SV.load(QtCore.QUrl('file:///' + QtCore.QDir.fromNativeSeparators(self.gswDialogUrl)))
 
     def endRefreshWidget(self):
