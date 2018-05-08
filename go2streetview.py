@@ -24,6 +24,7 @@ from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtTest
 from qgis import core, utils, gui
+from qgis.gui import QgsMapCanvas
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
 from .snapshot import snapShot
@@ -480,6 +481,7 @@ class go2streetview(gui.QgsMapTool):
         layer = self.iface.activeLayer()
 
         selected_fid = []
+        layer.removeSelection()
 
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
@@ -499,10 +501,13 @@ class go2streetview(gui.QgsMapTool):
             self.actualPOV['lon'] = geom.asPoint().x()
             self.actualPOV['lat'] = geom.asPoint().y()
             selected_fid.append(i.id())
-
             layer.select(selected_fid)
-            # self.setPosition()
-            # currPanoPOV = self.snapshotOutput.setCurrentPOV()
+
+
+            box = layer.boundingBoxOfSelected();
+            self.canvas.setExtent(box)
+            self.canvas.zoomOut()
+            self.canvas.refresh()
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
@@ -524,10 +529,19 @@ class go2streetview(gui.QgsMapTool):
 
             # msg.exec()
 
+            layer.removeSelection()
+            layer.select(i.id())
+
+            box2 = layer.boundingBoxOfSelected();
+            self.canvas.setExtent(box2)
+            self.canvas.zoomToSelected()
+            #self.canvas.zoomIn()
+            self.canvas.refresh()
+
             QtTest.QTest.qWait(5000)
 
             c += 1
-            if c >= 11:
+            if c >= 15:
                 break
 
 
