@@ -491,6 +491,7 @@ class go2streetview(gui.QgsMapTool):
 
         features = layer.getFeatures()
 
+
         c = 1
 
         for i in features:
