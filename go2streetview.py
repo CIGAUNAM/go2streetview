@@ -23,6 +23,7 @@
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtTest
+from PyQt5.QtTest import
 from qgis import core, utils, gui
 from qgis.gui import QgsMapCanvas
 from string import digits
