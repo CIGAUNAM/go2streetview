@@ -23,7 +23,6 @@
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtTest
-from PyQt5.QtTest import
 from qgis import core, utils, gui
 from qgis.gui import QgsMapCanvas
 from string import digits
@@ -484,14 +483,6 @@ class go2streetview(gui.QgsMapTool):
         selected_fid = []
         layer.removeSelection()
 
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        # msg.setText("This is a message box")
-        # msg.setInformativeText("This is additional information")
-        msg.setWindowTitle("MessageBox demo")
-        # msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        # msg.exec()
-
         features = layer.getFeatures()
 
 
@@ -512,10 +503,6 @@ class go2streetview(gui.QgsMapTool):
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(i.id()))
-
-            # msg.exec()
-
             QtTest.QTest.qWait(3000)
 
             core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
@@ -526,25 +513,22 @@ class go2streetview(gui.QgsMapTool):
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-            msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV) + "\n\n" + str(i.id()))
-
-            # msg.exec()
-
             layer.removeSelection()
             layer.select(i.id())
 
             box2 = layer.boundingBoxOfSelected();
             self.canvas.setExtent(box2)
             self.canvas.zoomToSelected()
-            self.canvas.zoomIn()
-            self.canvas.zoomIn()
+
+            for j in range(int(c/10) + 1):
+                self.canvas.zoomIn()
 
             self.canvas.refresh()
 
             QtTest.QTest.qWait(5000)
 
             c += 1
-            if c >= 15:
+            if c >= 25:
                 break
 
 
