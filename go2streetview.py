@@ -535,7 +535,9 @@ class go2streetview(gui.QgsMapTool):
             box2 = layer.boundingBoxOfSelected();
             self.canvas.setExtent(box2)
             self.canvas.zoomToSelected()
-            #self.canvas.zoomIn()
+            self.canvas.zoomIn()
+            self.canvas.zoomIn()
+
             self.canvas.refresh()
 
             QtTest.QTest.qWait(5000)
