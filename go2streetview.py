@@ -22,6 +22,7 @@
 
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
+from PyQt5 import QtTest
 from qgis import core, utils, gui
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
@@ -506,7 +507,9 @@ class go2streetview(gui.QgsMapTool):
 
             msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(i.id()))
 
-            msg.exec()
+            # msg.exec()
+
+            QtTest.QTest.qWait(3000)
 
             core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
             core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
@@ -518,7 +521,9 @@ class go2streetview(gui.QgsMapTool):
 
             msg.setText("lon1: " + str(geom.asPoint().x()) + " lat1: " + str(geom.asPoint().y()) + "\n\n" + str(self.actualPOV) + "\n\n" + str(i.id()))
 
-            msg.exec()
+            # msg.exec()
+
+            QtTest.QTest.qWait(5000)
 
             c += 1
             if c >= 11:
