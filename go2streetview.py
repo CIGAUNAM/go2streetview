@@ -474,6 +474,19 @@ class go2streetview(gui.QgsMapTool):
 
         return compass_bearing
 
+    def distance(self, lon1, lat1, lon2, lat2):
+        R = 6371000
+        rlat1 = math.radians(lat1)
+        rlat2 = math.radians(lat2)
+
+        dlon = math.radians(lon2 - lon1)
+        dlat = math.radians(lat2 - lat1)
+        a = (math.sin(dlat / 2)) ** 2 + math.cos(lat1) * math.cos(lat2) * (math.sin(dlon / 2)) ** 2
+        #a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) * math.sin(dlon / 2)
+        b = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+        distancia = (R * b)
+        return distancia
+
 
     def panoramaAction(self):
         # Lkernel_arbol_muestra_mix = 'C:/Users/SIE/Desktop/pruebapuntos1.gpkg'
@@ -484,7 +497,6 @@ class go2streetview(gui.QgsMapTool):
         layer.removeSelection()
 
         features = layer.getFeatures()
-
 
         c = 1
 
@@ -508,8 +520,10 @@ class go2streetview(gui.QgsMapTool):
             core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
             core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
             self.heading = self.calculate_initial_compass_bearing((float(self.actualPOV['lon']), float(self.actualPOV['lat'])), (float(geom.asPoint().x()), float(geom.asPoint().y())))
+            distancia = self.distance(float(self.actualPOV['lon']), float(self.actualPOV['lat']), float(geom.asPoint().x()), float(geom.asPoint().y()))
 
             core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
+            core.QgsMessageLog.logMessage("distancia: " + str(distancia), tag="go2streetview", level=core.Qgis.Info)
 
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
@@ -528,8 +542,13 @@ class go2streetview(gui.QgsMapTool):
             QtTest.QTest.qWait(5000)
 
             c += 1
-            if c >= 25:
+            if c >= 26:
                 break
+        layer.select(selected_fid)
+        box = layer.boundingBoxOfSelected();
+        self.canvas.setExtent(box)
+        self.canvas.zoomOut()
+        self.canvas.refresh()
 
 
     def catchJSevents(self,status):
