@@ -20,8 +20,6 @@
 """
 # Import the PyQt and QGIS libraries
 
-import streetview
-
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtTest
@@ -33,6 +31,8 @@ from .snapshot import snapShot
 from .transformgeom import transformGeometry
 #from py_tiled_layer.tilelayer import TileLayer, TileLayerType
 #from py_tiled_layer.tiles import TileServiceInfo
+
+import streetview
 
 import resources_rc
 
@@ -536,16 +536,22 @@ class go2streetview(gui.QgsMapTool):
             self.canvas.setExtent(box2)
             self.canvas.zoomToSelected()
 
-            for j in range(int(c/10) + 1):
+
+            for j in range(int(c/10)):
                 self.canvas.zoomIn()
+                self.canvas.zoomIn()
+
 
             self.canvas.refresh()
 
             QtTest.QTest.qWait(5000)
 
+
+
             c += 1
-            if c >= 26:
+            if c >= 3:
                 break
+
         layer.select(selected_fid)
         box = layer.boundingBoxOfSelected();
         self.canvas.setExtent(box)
