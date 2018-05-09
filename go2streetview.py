@@ -20,6 +20,8 @@
 """
 # Import the PyQt and QGIS libraries
 
+import streetview
+
 from PyQt5 import Qt, QtCore, QtWidgets, QtGui, QtWebKit, QtWebKitWidgets, QtXml, QtNetwork, uic
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5 import QtTest
