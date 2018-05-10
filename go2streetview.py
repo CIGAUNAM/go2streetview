@@ -28,6 +28,7 @@ from qgis.gui import QgsMapCanvas
 from string import digits
 from .go2streetviewDialog import go2streetviewDialog, dumWidget,snapshotLicenseDialog, infobox
 from .snapshot import snapShot
+from .pano_snapshot import panoSnapShot
 from .transformgeom import transformGeometry
 #from py_tiled_layer.tilelayer import TileLayer, TileLayerType
 #from py_tiled_layer.tiles import TileServiceInfo
@@ -74,6 +75,8 @@ class go2streetview(gui.QgsMapTool):
         self.iface.addPluginToWebMenu("&go2streetview", self.StreetviewAction)
         self.dirPath = os.path.dirname( os.path.abspath( __file__ ) )
         self.actualPOV = {}
+        self.panoPOV = {}
+        self.feat_id = 0
         self.view = go2streetviewDialog()
         self.dumView = dumWidget()
         self.dumView.enter.connect(self.clickOn)
@@ -87,6 +90,7 @@ class go2streetview(gui.QgsMapTool):
         self.viewHeight=self.apdockwidget.size().height()
         self.viewWidth=self.apdockwidget.size().width()
         self.snapshotOutput = snapShot(self)
+        self.panoSnapShotOutput = panoSnapShot(self)
         self.view.SV.settings().globalSettings().setAttribute(QtWebKit.QWebSettings.DeveloperExtrasEnabled, True);
         self.view.SV.settings().globalSettings().setAttribute(QtWebKit.QWebSettings.LocalContentCanAccessRemoteUrls, True);
         self.view.SV.page().networkAccessManager().finished.connect(self.noSVConnectionsPending)
@@ -507,7 +511,7 @@ class go2streetview(gui.QgsMapTool):
             layer.startEditing()
             geom = feat.geometry()
             core.QgsMessageLog.logMessage("FEAT: " + str(feat), tag="go2streetview", level=core.Qgis.Info)
-            id = feat.id()
+            self.feat_id = feat.id()
             self.actualPOV['lon'] = geom.asPoint().x()
             self.actualPOV['lat'] = geom.asPoint().y()
             selected_fid.append(feat.id())
@@ -549,7 +553,9 @@ class go2streetview(gui.QgsMapTool):
             self.canvas.refresh()
 
             panoids = streetview.panoids(lat=float(self.actualPOV['lat']), lon=float(self.actualPOV['lon']))
-            core.QgsMessageLog.logMessage("PANOIDS: " + str(panoids), tag="go2streetview", level=core.Qgis.Info)
+            self.feat_id = feat.id()
+            core.QgsMessageLog.logMessage("FEATID: " + str(self.feat_id), tag="go2streetview", level=core.Qgis.Info)
+
 
             if len(panoids) >= 1 and distancia < 20:
 
@@ -559,13 +565,13 @@ class go2streetview(gui.QgsMapTool):
                     a = ultimo['year']
                 except:
                     ultimo['year'] = 1900
-                    core.QgsMessageLog.logMessage("ULTIMOy: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+                    # core.QgsMessageLog.logMessage("ULTIMOy: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
 
                 try:
                     a = ultimo['month']
                 except:
                     ultimo['month'] = 1
-                    core.QgsMessageLog.logMessage("ULTIMOm: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+                    # core.QgsMessageLog.logMessage("ULTIMOm: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
 
                 for i in panoids:
                     try:
@@ -593,7 +599,28 @@ class go2streetview(gui.QgsMapTool):
                 core.QgsMessageLog.logMessage("ULTIMO: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
                 core.QgsMessageLog.logMessage("ULTIMOPANOID: " + str(ultimo['panoid']), tag="go2streetview", level=core.Qgis.Info)
                 layer.changeAttributeValue(feat.id(), 45, str(ultimo['panoid']))
+                layer.changeAttributeValue(feat.id(), 40, float(self.actualPOV['lat']))
+                layer.changeAttributeValue(feat.id(), 41, float(self.actualPOV['lon']))
+                layer.changeAttributeValue(feat.id(), 37, float(distancia))
+                layer.changeAttributeValue(feat.id(), 38, float(self.heading))
+
+
                 layer.commitChanges()
+
+                self.panoPOV = self.actualPOV
+
+                self.panoSnapShotOutput.saveSnapShot(self.actualPOV, feat.id(), self.heading)
+                # path = os.path.dirname( os.path.abspath( __file__ ) )
+                svpanos = os.path.join(self.dirPath, 'svpanos')
+
+                core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
+
+                core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
+                streetview.api_download(panoid=ultimo['panoid'], heading=self.heading, flat_dir=svpanos, key=self.APIkey, fname=str(feat.id()))
+
+
+
+
 
 
             QtTest.QTest.qWait(5000)
@@ -601,7 +628,7 @@ class go2streetview(gui.QgsMapTool):
 
 
             c += 1
-            if c >= 11:
+            if c >= 26:
                 break
 
 
