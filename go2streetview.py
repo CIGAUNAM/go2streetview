@@ -502,11 +502,15 @@ class go2streetview(gui.QgsMapTool):
 
         c = 1
 
-        for i in features:
-            geom = i.geometry()
+
+        for feat in features:
+            layer.startEditing()
+            geom = feat.geometry()
+            core.QgsMessageLog.logMessage("FEAT: " + str(feat), tag="go2streetview", level=core.Qgis.Info)
+            id = feat.id()
             self.actualPOV['lon'] = geom.asPoint().x()
             self.actualPOV['lat'] = geom.asPoint().y()
-            selected_fid.append(i.id())
+            selected_fid.append(feat.id())
             layer.select(selected_fid)
 
 
@@ -530,7 +534,7 @@ class go2streetview(gui.QgsMapTool):
             self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
             layer.removeSelection()
-            layer.select(i.id())
+            layer.select(feat.id())
 
             box2 = layer.boundingBoxOfSelected();
             self.canvas.setExtent(box2)
@@ -544,13 +548,64 @@ class go2streetview(gui.QgsMapTool):
 
             self.canvas.refresh()
 
+            panoids = streetview.panoids(lat=float(self.actualPOV['lat']), lon=float(self.actualPOV['lon']))
+            core.QgsMessageLog.logMessage("PANOIDS: " + str(panoids), tag="go2streetview", level=core.Qgis.Info)
+
+            if len(panoids) >= 1 and distancia < 20:
+
+                ultimo = panoids[0]
+
+                try:
+                    a = ultimo['year']
+                except:
+                    ultimo['year'] = 1900
+                    core.QgsMessageLog.logMessage("ULTIMOy: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+
+                try:
+                    a = ultimo['month']
+                except:
+                    ultimo['month'] = 1
+                    core.QgsMessageLog.logMessage("ULTIMOm: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+
+                for i in panoids:
+                    try:
+                        y = i['year']
+                        print(y)
+                        if y > ultimo['year']:
+                            ultimo = i
+                    except:
+                        pass
+
+                try:
+                    y = ultimo['year']
+                    if y == 1900:
+                        del ultimo['year']
+                        del ultimo['month']
+                except:
+                    pass
+
+                #i.changeAttributeValues({i.id() : })  i.pano_id = ultimo['panoid']
+                # i.pano_lat = float(self.actualPOV['lat'])
+                # i.pano_lon = float(self.actualPOV['lon'])
+                # i.pano_heading = self.heading
+                # i.pano_distance = distancia
+
+                core.QgsMessageLog.logMessage("ULTIMO: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+                core.QgsMessageLog.logMessage("ULTIMOPANOID: " + str(ultimo['panoid']), tag="go2streetview", level=core.Qgis.Info)
+                layer.changeAttributeValue(feat.id(), 45, str(ultimo['panoid']))
+                layer.commitChanges()
+
+
             QtTest.QTest.qWait(5000)
 
 
 
             c += 1
-            if c >= 3:
+            if c >= 11:
                 break
+
+
+
 
         layer.select(selected_fid)
         box = layer.boundingBoxOfSelected();
