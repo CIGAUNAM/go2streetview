@@ -599,10 +599,22 @@ class go2streetview(gui.QgsMapTool):
                 core.QgsMessageLog.logMessage("ULTIMO: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
                 core.QgsMessageLog.logMessage("ULTIMOPANOID: " + str(ultimo['panoid']), tag="go2streetview", level=core.Qgis.Info)
                 layer.changeAttributeValue(feat.id(), 45, str(ultimo['panoid']))
-                layer.changeAttributeValue(feat.id(), 40, float(self.actualPOV['lat']))
-                layer.changeAttributeValue(feat.id(), 41, float(self.actualPOV['lon']))
+                layer.changeAttributeValue(feat.id(), 40, float(ultimo['lat']))
+                layer.changeAttributeValue(feat.id(), 41, float(ultimo['lon']))
                 layer.changeAttributeValue(feat.id(), 37, float(distancia))
                 layer.changeAttributeValue(feat.id(), 38, float(self.heading))
+
+                try:
+                    y = int(ultimo['year'])
+                    layer.changeAttributeValue(feat.id(), 47, y)
+                except:
+                    pass
+
+                try:
+                    m = int(ultimo['month'])
+                    layer.changeAttributeValue(feat.id(), 46, m)
+                except:
+                    pass
 
 
                 layer.commitChanges()
@@ -616,6 +628,7 @@ class go2streetview(gui.QgsMapTool):
                 core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
 
                 core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
+
                 streetview.api_download(panoid=ultimo['panoid'], heading=self.heading, flat_dir=svpanos, key=self.APIkey, fname=str(feat.id()))
 
 
