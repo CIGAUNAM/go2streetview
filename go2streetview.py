@@ -508,142 +508,146 @@ class go2streetview(gui.QgsMapTool):
 
 
         for feat in features:
-            layer.startEditing()
-            geom = feat.geometry()
-            core.QgsMessageLog.logMessage("FEAT: " + str(feat), tag="go2streetview", level=core.Qgis.Info)
-            self.feat_id = feat.id()
-            self.actualPOV['lon'] = geom.asPoint().x()
-            self.actualPOV['lat'] = geom.asPoint().y()
-            selected_fid.append(feat.id())
-            layer.select(selected_fid)
+            attrs = feat.attributes()
+            core.QgsMessageLog.logMessage("ATTRS45: " + str(attrs[45]), tag="go2streetview", level=core.Qgis.Info)
+            if not attrs[45]:
+                layer.startEditing()
+                geom = feat.geometry()
+                core.QgsMessageLog.logMessage("FEAT: " + str(feat), tag="go2streetview", level=core.Qgis.Info)
+                self.feat_id = feat.id()
+                self.actualPOV['lon'] = geom.asPoint().x()
+                self.actualPOV['lat'] = geom.asPoint().y()
+                selected_fid.append(feat.id())
+                layer.select(selected_fid)
 
 
 
-            box = layer.boundingBoxOfSelected();
-            self.canvas.setExtent(box)
-            self.canvas.zoomOut()
-            self.canvas.refresh()
+                box = layer.boundingBoxOfSelected();
+                self.canvas.setExtent(box)
+                self.canvas.zoomOut()
+                self.canvas.refresh()
 
-            self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
+                self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-            QtTest.QTest.qWait(3000)
+                QtTest.QTest.qWait(3000)
 
-            core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
-            core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
-            self.heading = self.calculate_initial_compass_bearing((float(self.actualPOV['lon']), float(self.actualPOV['lat'])), (float(geom.asPoint().x()), float(geom.asPoint().y())))
-            distancia = self.distance(float(self.actualPOV['lon']), float(self.actualPOV['lat']), float(geom.asPoint().x()), float(geom.asPoint().y()))
+                core.QgsMessageLog.logMessage("Punto Arbol: " + str(geom.asPoint().y()) + ", " + str(geom.asPoint().x()), tag="go2streetview", level=core.Qgis.Info)
+                core.QgsMessageLog.logMessage("Punto Panorama: " + str(self.actualPOV['lat']) + ", " + str(self.actualPOV['lon']), tag="go2streetview", level=core.Qgis.Info)
+                self.heading = self.calculate_initial_compass_bearing((float(self.actualPOV['lon']), float(self.actualPOV['lat'])), (float(geom.asPoint().x()), float(geom.asPoint().y())))
+                distancia = self.distance(float(self.actualPOV['lon']), float(self.actualPOV['lat']), float(geom.asPoint().x()), float(geom.asPoint().y()))
 
-            core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
-            core.QgsMessageLog.logMessage("distancia: " + str(distancia), tag="go2streetview", level=core.Qgis.Info)
+                core.QgsMessageLog.logMessage("Heading: " + str(self.heading), tag="go2streetview", level=core.Qgis.Info)
+                core.QgsMessageLog.logMessage("distancia: " + str(distancia), tag="go2streetview", level=core.Qgis.Info)
 
-            self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
+                self.refreshWidget(self.actualPOV['lon'], self.actualPOV['lat'])
 
-            layer.removeSelection()
-            layer.select(feat.id())
+                layer.removeSelection()
+                layer.select(feat.id())
 
-            box2 = layer.boundingBoxOfSelected();
-            self.canvas.setExtent(box2)
-            self.canvas.zoomToSelected()
-
-
-            for j in range(int(c/10)):
-                self.canvas.zoomIn()
-                self.canvas.zoomIn()
+                box2 = layer.boundingBoxOfSelected();
+                self.canvas.setExtent(box2)
+                self.canvas.zoomToSelected()
 
 
-            self.canvas.refresh()
-
-            panoids = streetview.panoids(lat=float(self.actualPOV['lat']), lon=float(self.actualPOV['lon']))
-            self.feat_id = feat.id()
-            core.QgsMessageLog.logMessage("FEATID: " + str(self.feat_id), tag="go2streetview", level=core.Qgis.Info)
+                for j in range(int(c/10)):
+                    self.canvas.zoomIn()
+                    self.canvas.zoomIn()
 
 
-            if len(panoids) >= 1 and distancia < 20:
+                self.canvas.refresh()
 
-                ultimo = panoids[0]
+                panoids = streetview.panoids(lat=float(self.actualPOV['lat']), lon=float(self.actualPOV['lon']))
+                self.feat_id = feat.id()
+                core.QgsMessageLog.logMessage("FEATID: " + str(self.feat_id), tag="go2streetview", level=core.Qgis.Info)
 
-                try:
-                    a = ultimo['year']
-                except:
-                    ultimo['year'] = 1900
-                    # core.QgsMessageLog.logMessage("ULTIMOy: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
 
-                try:
-                    a = ultimo['month']
-                except:
-                    ultimo['month'] = 1
-                    # core.QgsMessageLog.logMessage("ULTIMOm: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+                if len(panoids) >= 1 and distancia < 20:
 
-                for i in panoids:
+                    ultimo = panoids[0]
+
                     try:
-                        y = i['year']
-                        print(y)
-                        if y > ultimo['year']:
-                            ultimo = i
+                        a = ultimo['year']
+                    except:
+                        ultimo['year'] = 1900
+                        # core.QgsMessageLog.logMessage("ULTIMOy: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+
+                    try:
+                        a = ultimo['month']
+                    except:
+                        ultimo['month'] = 1
+                        # core.QgsMessageLog.logMessage("ULTIMOm: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+
+                    for i in panoids:
+                        try:
+                            y = i['year']
+                            print(y)
+                            if y > ultimo['year']:
+                                ultimo = i
+                        except:
+                            pass
+
+                    try:
+                        y = ultimo['year']
+                        if y == 1900:
+                            del ultimo['year']
+                            del ultimo['month']
                     except:
                         pass
 
-                try:
-                    y = ultimo['year']
-                    if y == 1900:
-                        del ultimo['year']
-                        del ultimo['month']
-                except:
-                    pass
+                    #i.changeAttributeValues({i.id() : })  i.pano_id = ultimo['panoid']
+                    # i.pano_lat = float(self.actualPOV['lat'])
+                    # i.pano_lon = float(self.actualPOV['lon'])
+                    # i.pano_heading = self.heading
+                    # i.pano_distance = distancia
 
-                #i.changeAttributeValues({i.id() : })  i.pano_id = ultimo['panoid']
-                # i.pano_lat = float(self.actualPOV['lat'])
-                # i.pano_lon = float(self.actualPOV['lon'])
-                # i.pano_heading = self.heading
-                # i.pano_distance = distancia
+                    core.QgsMessageLog.logMessage("ULTIMO: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
+                    core.QgsMessageLog.logMessage("ULTIMOPANOID: " + str(ultimo['panoid']), tag="go2streetview", level=core.Qgis.Info)
+                    layer.changeAttributeValue(feat.id(), 45, str(ultimo['panoid']))
+                    layer.changeAttributeValue(feat.id(), 40, float(ultimo['lat']))
+                    layer.changeAttributeValue(feat.id(), 41, float(ultimo['lon']))
+                    layer.changeAttributeValue(feat.id(), 37, float(distancia))
+                    layer.changeAttributeValue(feat.id(), 38, float(self.heading))
 
-                core.QgsMessageLog.logMessage("ULTIMO: " + str(ultimo), tag="go2streetview", level=core.Qgis.Info)
-                core.QgsMessageLog.logMessage("ULTIMOPANOID: " + str(ultimo['panoid']), tag="go2streetview", level=core.Qgis.Info)
-                layer.changeAttributeValue(feat.id(), 45, str(ultimo['panoid']))
-                layer.changeAttributeValue(feat.id(), 40, float(ultimo['lat']))
-                layer.changeAttributeValue(feat.id(), 41, float(ultimo['lon']))
-                layer.changeAttributeValue(feat.id(), 37, float(distancia))
-                layer.changeAttributeValue(feat.id(), 38, float(self.heading))
+                    try:
+                        y = int(ultimo['year'])
+                        layer.changeAttributeValue(feat.id(), 47, y)
+                    except:
+                        pass
 
-                try:
-                    y = int(ultimo['year'])
-                    layer.changeAttributeValue(feat.id(), 47, y)
-                except:
-                    pass
-
-                try:
-                    m = int(ultimo['month'])
-                    layer.changeAttributeValue(feat.id(), 46, m)
-                except:
-                    pass
+                    try:
+                        m = int(ultimo['month'])
+                        layer.changeAttributeValue(feat.id(), 46, m)
+                    except:
+                        pass
 
 
-                layer.commitChanges()
+                    layer.commitChanges()
 
-                self.panoPOV = self.actualPOV
+                    self.panoPOV = self.actualPOV
 
-                self.panoSnapShotOutput.saveSnapShot(self.actualPOV, feat.id(), self.heading)
-                # path = os.path.dirname( os.path.abspath( __file__ ) )
-                svpanos = os.path.join(self.dirPath, 'svpanos')
+                    self.panoSnapShotOutput.saveSnapShot(self.actualPOV, feat.id(), self.heading)
+                    # path = os.path.dirname( os.path.abspath( __file__ ) )
+                    svpanos = os.path.join(self.dirPath, 'svpanos')
 
-                core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
+                    core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
 
-                core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
+                    core.QgsMessageLog.logMessage("----: ", tag="go2streetview", level=core.Qgis.Info)
 
-                streetview.api_download(panoid=ultimo['panoid'], heading=self.heading, flat_dir=svpanos, key=self.APIkey, fname=str(feat.id()))
+                    streetview.api_download(panoid=ultimo['panoid'], heading=self.heading, flat_dir=svpanos, key=self.APIkey, fname=str(feat.id()))
 
 
 
 
 
 
-            QtTest.QTest.qWait(5000)
+                QtTest.QTest.qWait(5000)
 
 
 
-            c += 1
-            if c >= 26:
-                break
+                # c += 1
+                # if c >= 3:
+                if str(geom.asPoint().y()) == str(self.actualPOV['lat']) and str(geom.asPoint().x()) == str(self.actualPOV['lon']):
+                    break
 
 
 
