@@ -549,7 +549,8 @@ class go2streetview(gui.QgsMapTool):
                 self.canvas.zoomToSelected()
 
 
-                for j in range(int(c/10)):
+                for j in range(int(c/10)+1):
+                    self.canvas.zoomIn()
                     self.canvas.zoomIn()
                     self.canvas.zoomIn()
 
@@ -561,7 +562,8 @@ class go2streetview(gui.QgsMapTool):
                 core.QgsMessageLog.logMessage("FEATID: " + str(self.feat_id), tag="go2streetview", level=core.Qgis.Info)
 
 
-                if len(panoids) >= 1 and distancia < 20:
+                # if len(panoids) >= 1 and distancia < 20:
+                if len(panoids) >= 1:
 
                     ultimo = panoids[0]
 
@@ -646,8 +648,8 @@ class go2streetview(gui.QgsMapTool):
 
                 # c += 1
                 # if c >= 3:
-                if str(geom.asPoint().y()) == str(self.actualPOV['lat']) and str(geom.asPoint().x()) == str(self.actualPOV['lon']):
-                    break
+                # if str(geom.asPoint().y()) == str(self.actualPOV['lat']) and str(geom.asPoint().x()) == str(self.actualPOV['lon']):
+                #    break
 
 
 
