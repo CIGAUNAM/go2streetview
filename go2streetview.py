@@ -518,6 +518,7 @@ class go2streetview(gui.QgsMapTool):
             layer.select(selected_fid)
 
 
+
             box = layer.boundingBoxOfSelected();
             self.canvas.setExtent(box)
             self.canvas.zoomOut()
